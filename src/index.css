@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -92,7 +92,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -102,15 +102,15 @@
 
 @layer components {
   .btn-primary {
-    @apply px-6 py-3 bg-penworld-forest text-penworld-cream font-medium rounded-md hover:bg-penworld-olive transition-colors duration-300 inline-flex items-center justify-center;
+    @apply px-6 py-3 bg-penworld-forest text-penworld-cream font-medium rounded-md hover:bg-penworld-olive transition-colors duration-300 inline-flex items-center justify-center dark:bg-penworld-caramel dark:text-penworld-forest dark:hover:bg-penworld-amber;
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-penworld-caramel text-penworld-forest font-medium rounded-md hover:bg-penworld-amber hover:text-penworld-cream transition-colors duration-300 inline-flex items-center justify-center;
+    @apply px-6 py-3 bg-penworld-caramel text-penworld-forest font-medium rounded-md hover:bg-penworld-amber hover:text-penworld-cream transition-colors duration-300 inline-flex items-center justify-center dark:bg-penworld-olive dark:text-penworld-cream dark:hover:bg-penworld-forest;
   }
   
   .paper-bg {
-    @apply bg-penworld-cream bg-opacity-80;
+    @apply bg-penworld-cream bg-opacity-80 dark:bg-penworld-forest dark:bg-opacity-90;
     background-image: 
       linear-gradient(rgba(254, 250, 224, 0.6) 1px, transparent 1px),
       linear-gradient(90deg, rgba(254, 250, 224, 0.6) 1px, transparent 1px);
@@ -118,21 +118,56 @@
     background-position: -1px -1px;
   }
   
+  .dark .paper-bg {
+    background-image: 
+      linear-gradient(rgba(40, 54, 24, 0.8) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(40, 54, 24, 0.8) 1px, transparent 1px);
+  }
+  
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
   }
   
   .feature-card {
-    @apply bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-lg border border-penworld-caramel/30 shadow-md hover:shadow-lg transition-all duration-300;
+    @apply bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-lg border border-penworld-caramel/30 shadow-md hover:shadow-lg transition-all duration-300 dark:bg-penworld-forest dark:bg-opacity-80 dark:border-penworld-caramel/50;
   }
 
   .nav-link {
-    @apply relative font-medium text-penworld-forest hover:text-penworld-amber transition-colors duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-penworld-amber after:left-0 after:bottom-0 after:transition-all hover:after:w-full;
+    @apply relative font-medium text-penworld-forest hover:text-penworld-amber transition-colors duration-300 after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-penworld-amber after:left-0 after:bottom-0 after:transition-all hover:after:w-full dark:text-penworld-cream dark:hover:text-penworld-caramel dark:after:bg-penworld-caramel;
+  }
+  
+  .vintage-pattern {
+    background-color: var(--pattern-bg-color, #FEFAE0);
+    background-image: 
+      radial-gradient(var(--pattern-dot-color, #DDA15E) 2px, transparent 2px),
+      radial-gradient(var(--pattern-dot-color, #DDA15E) 2px, transparent 2px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.15;
+  }
+  
+  .dark .vintage-pattern {
+    --pattern-bg-color: #283618;
+    --pattern-dot-color: #DDA15E;
+  }
+  
+  .paper-texture {
+    background-image: url('/paper-texture.png');
+    background-repeat: repeat;
+    background-size: 300px 300px;
+  }
+  
+  .font-caveat {
+    font-family: 'Caveat', cursive;
   }
 }
 
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .letter-pattern {
@@ -141,6 +176,15 @@
     transparent 28px,
     rgba(96, 108, 56, 0.1) 28px,
     rgba(96, 108, 56, 0.1) 29px
+  );
+}
+
+.dark .letter-pattern {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 28px,
+    rgba(221, 161, 94, 0.1) 28px,
+    rgba(221, 161, 94, 0.1) 29px
   );
 }
 

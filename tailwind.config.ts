@@ -73,7 +73,8 @@ export default {
 			},
 			fontFamily: {
 				'penworld': ['Playfair Display', 'serif'],
-				'sans': ['Inter', 'sans-serif']
+				'sans': ['Inter', 'sans-serif'],
+                'caveat': ['Caveat', 'cursive']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
